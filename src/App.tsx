@@ -2,7 +2,7 @@ import { Navbar, Hero, Projects, Skills, Experience, Contact, Footer } from "./c
 
 const App = () => {
   return (
-    <div>
+    <>
       <nav>
         <Navbar />
       </nav>
@@ -13,10 +13,10 @@ const App = () => {
         <Projects />
       </section>
       <section>
-        <Skills />
+        <Experience />
       </section>
       <section>
-        <Experience />
+        <Skills />
       </section>
       <section>
         <Contact />
@@ -24,7 +24,7 @@ const App = () => {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   )
 };
 
