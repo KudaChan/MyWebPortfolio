@@ -59,6 +59,7 @@ const services = [
   },
 ];
 
+// Technologies
 const technologies = [
   {
     name: "HTML 5",
@@ -114,6 +115,7 @@ const technologies = [
   },
 ];
 
+// Experiences
 const experiences = [
   {
     title: "React.js Developer",
@@ -169,6 +171,7 @@ const experiences = [
   },
 ];
 
+//  Testimonials
 const testimonials = [
   {
     testimonial:
@@ -196,6 +199,7 @@ const testimonials = [
   },
 ];
 
+// Projects Details
 const projects = [
   {
     name: "Car Rent",
