@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
-import { style } from "../style";
-import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { style } from "../../style";
+import { SectionWrapper } from "../../hoc";
+import { projects } from "../../constants";
+import { fadeIn, textVariant } from "../../utils/motion";
 
-import ProjectCard from "./ProjectsCard";
+import ProjectCard from "../ui/ProjectsCard";
 
 const Projects = () => {
   return (
@@ -36,6 +36,19 @@ const Projects = () => {
           />
         ))}
       </div>
+      <motion.div
+        className="mt-20 flex justify-center items-center"
+        variants={fadeIn("", "", 0.5, 1)}
+      >
+        <a
+          href="/projects"
+          target="_self"
+          rel="noopener noreferrer"
+          className="text-white text-[18px] font-medium bg-secondary/15 shadow-md shadow-secondary px-4 py-2 rounded-md hover:bg-secondary/50"
+        >
+          See My Other Projects
+        </a>
+      </motion.div>
     </>
   )
 }

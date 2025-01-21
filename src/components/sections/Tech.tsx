@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
-import { SectionWrapper } from "../hoc"
-import { BallCanvas } from "./canvas"
-import { technologies } from "../constants"
-import { style } from "../style";
-import { textVariant } from "../utils/motion";
+import { SectionWrapper } from "../../hoc"
+import { BallCanvas } from "../canvas"
+import { technologies } from "../../constants"
+import { style } from "../../style";
+import { textVariant } from "../../utils/motion";
 
 
 const Tech = () => {

@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
-import { style } from "../style";
-import { PageWrapper } from "../hoc";
-import { fullstack, frontend, backend } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { style } from "../../style";
+import { PageWrapper } from "../../hoc";
+import { fullstack, frontend, backend } from "../../constants";
+import { fadeIn, textVariant } from "../../utils/motion";
 
-import ProjectCard from "../components/ProjectsCard";
+import ProjectCard from "./ProjectsCard";
 
 const AllProjects = () => {
   return (
@@ -27,7 +27,6 @@ const AllProjects = () => {
             Following projects showcase my skills and experience in web development through real-world examples of my work. Each project is briefly described with a link to the live demo and the source code repository. It reflects my passion and ability to solve complex problems, work with different technologies, and deliver high-quality products.
           </motion.p>
         </div>
-        <div>
           <motion.div
             variants={textVariant(0)}
           >
@@ -44,12 +43,10 @@ const AllProjects = () => {
               />
             ))}
           </div>
-        </div>
-        <div className="text-white font-semibold md:text-[40px] sm:text-[30px] xs:text-[20px] text-[10px] mt-10 border-b-2 border-secondary pt-5">
           <motion.div
             variants={textVariant(0)}
           >
-            <h3 className={style.sectionHeadText}>
+            <h3 className="text-white font-semibold md:text-[40px] sm:text-[30px] xs:text-[20px] text-[10px] mt-10 border-b-2 border-secondary pt-5">
               Fontend Projects.
             </h3>
           </motion.div>
@@ -62,12 +59,10 @@ const AllProjects = () => {
               />
             ))}
           </div>
-        </div>
-        <div className="text-white font-semibold md:text-[40px] sm:text-[30px] xs:text-[20px] text-[10px] mt-10 border-secondary border-b-2 pt-5">
           <motion.div
             variants={textVariant(0)}
           >
-            <h3 className={style.sectionHeadText}>
+            <h3 className="text-white font-semibold md:text-[40px] sm:text-[30px] xs:text-[20px] text-[10px] mt-10 border-b-2 border-secondary pt-5">
               Backend Projects.
             </h3>
           </motion.div>
@@ -80,7 +75,6 @@ const AllProjects = () => {
               />
             ))}
           </div>
-        </div>
       </div>
     </>
   )

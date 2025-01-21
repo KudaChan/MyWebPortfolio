@@ -1,11 +1,14 @@
-import { AllProjects } from "../components"
+import { AllProjects, StarsCanvas} from "../components"
 
-const All_projects = () => {
+const All_Projects = () => {
   return (
-    <div className="h-full w-full bg-primary flex justify-center">
-      <AllProjects />
+    <div className="relative z-0 min-h-screen w-full bg-primary">
+      <div className=" flex justify-center">
+        <AllProjects />
+        <StarsCanvas />
+      </div>
     </div>
   )
 }
 
-export default All_projects
+export default All_Projects

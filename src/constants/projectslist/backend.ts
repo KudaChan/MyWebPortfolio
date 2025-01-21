@@ -2,7 +2,7 @@ import { herbai } from "../../assets";
 
 const backend = [
   {
-    name: "Herb Ai",
+    name: "Herbasd 1",
     description:
       "Web-based platform that allows users to identify plants with there leaves photo using machine learning.(Number of plant limited to 5.)",
     tags: [

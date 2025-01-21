@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { EarthCanvas } from "./canvas";
-import { SectionWrapper } from "../hoc";
-import EmailForm from "./EmailForm";
-import { slideIn } from "../utils/motion";
+import { EarthCanvas } from "../canvas";
+import { SectionWrapper } from "../../hoc";
+import EmailForm from "../ui/EmailForm";
+import { slideIn } from "../../utils/motion";
 
 const Contact = () => {
   return (

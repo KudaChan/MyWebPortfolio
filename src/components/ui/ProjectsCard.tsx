@@ -1,8 +1,8 @@
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
-import { github, arrow } from "../assets";
-import { fadeIn} from "../utils/motion";
+import { github, arrow } from "../../assets";
+import { fadeIn} from "../../utils/motion";
 
 interface projectCardProps {
   key: string;

@@ -1,7 +1,7 @@
 import { useRouteError } from "react-router-dom";
 
 import { style } from "../style";
-import { EmailForm } from "../components";
+import { EmailForm, StarsCanvas } from "../components";
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -18,6 +18,7 @@ const ErrorPage = () => {
         </div>
         <div className="flex justify-center mt-8 w-[50%]">
           <EmailForm />
+          <StarsCanvas />
         </div>
       </div>
     </div>

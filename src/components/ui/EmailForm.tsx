@@ -2,9 +2,9 @@ import { useState, useRef} from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-import { style } from "../style";
+import { style } from "../../style";
 
-import { slideIn } from "../utils/motion";
+import { slideIn } from "../../utils/motion";
 
 const EmailForm = () => {
   const formRef = useRef<HTMLFormElement>(null);

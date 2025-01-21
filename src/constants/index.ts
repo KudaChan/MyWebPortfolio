@@ -28,7 +28,9 @@ import {
 
 import fullstack from "./projectslist/frontend";
 import frontend from "./projectslist/frontend";
-import backend  from "./projectslist/backend";
+import backend from "./projectslist/backend";
+
+import allexperiences from "./experience";
 
 export const navLinks = [
   {
@@ -211,4 +213,4 @@ const footerIcon = [
   }
 ]
 
-export { services, technologies, experiences, projects, footerIcon, fullstack, frontend, backend };
+export { services, technologies, experiences, projects, footerIcon, fullstack, frontend, backend, allexperiences };
