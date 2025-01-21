@@ -11,6 +11,7 @@ import { textVariant } from '../utils/motion';
 interface ExperienceCardProps {
   experience: {
     title: string;
+    position: string;
     company_name: string;
     icon: string;
     iconBg: string;
@@ -36,9 +37,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({experience}) => (
       }
     >
       <div>
-        <h3 className='text-white text-[24px] font-bold'>
-          {experience.title}
+      <h3 className='text-white text-[24px] font-bold'>
+        {experience.title}
       </h3>
+      <h4 className='text-secondary text-[18px] font-bold'>
+        {experience.position}
+      </h4>
       <p className='text-secondary text-[16px] font-semibold'>
         {experience.company_name}
       </p>

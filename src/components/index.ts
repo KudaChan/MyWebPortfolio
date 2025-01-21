@@ -3,9 +3,13 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import About from "./About";
 import Projects from "./Projects";
+import AllProjects from "./AllProjects";
+import ProjectCard from "./ProjectsCard";
 import Experience from "./Experience";
 import Tech from "./Tech";
 import EmailForm from "./EmailForm";
+import Contact from "./Contact";
 import Footer from "./Footer";
 
-export { Hero, Projects, Experience, Tech, EmailForm, Footer, About, Navbar, EarthCanvas, BallCanvas, ComputerCanvas, StarsCanvas }
+
+export { Hero, Projects, ProjectCard, AllProjects, Experience, Tech, Contact, EmailForm, Footer, About, Navbar, EarthCanvas, BallCanvas, ComputerCanvas, StarsCanvas }

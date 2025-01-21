@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import backend from "./backend.png";
+import backendicon from "./backendicon.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
@@ -22,22 +22,21 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
+import csharp from "./tech/csharp.png";
+import nextjs from "./tech/nextjs.png";
+import postgresql from "./tech/postgresql.png";
 import threejs from "./tech/threejs.svg";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+import aatvish from "./company/aatvish.png";
+import jaypee from "./company/jaypee.jpg";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import herbai from "./herbai.png"
 
 import copyright from "./copyright.png";
 
 export {
   logo,
-  backend,
+  backendicon,
   creator,
   mobile,
   web,
@@ -53,6 +52,9 @@ export {
   git,
   html,
   javascript,
+  csharp,
+  nextjs,
+  postgresql,
   mongodb,
   nodejs,
   reactjs,
@@ -60,12 +62,8 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
+  aatvish,
+  jaypee,
+  herbai,
   copyright,
 };
