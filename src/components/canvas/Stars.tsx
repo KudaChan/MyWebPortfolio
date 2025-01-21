@@ -1,7 +1,5 @@
 import { Suspense } from 'react';
-// import { , useFrame, PointsProps, } from '@react-three/fiber';
 import { Preload } from '@react-three/drei';
-// import * as random from "maath/random/dist/maath-random.cjs";
 import *  as React from 'react'
 import { ReactThreeFiber, useFrame, Canvas } from '@react-three/fiber'
 import { Points, Vector3, Spherical, Color, AdditiveBlending, ShaderMaterial } from 'three'

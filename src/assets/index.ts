@@ -4,6 +4,8 @@ import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
 import github from "./github.png";
+import x from "./x.png";
+import linkedin from "./linkedin.png";
 import arrow from "./arrow.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -31,6 +33,8 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import copyright from "./copyright.png";
+
 export {
   logo,
   backend,
@@ -38,6 +42,8 @@ export {
   mobile,
   web,
   github,
+  x,
+  linkedin,
   arrow,
   menu,
   close,
@@ -61,4 +67,5 @@ export {
   carrent,
   jobit,
   tripguide,
+  copyright,
 };

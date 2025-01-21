@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { style } from '../style';
 import { navLinks } from '../constants';
-import { logo, menu, close } from '../assets';
+import { menu, close } from '../assets';
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav
       className={`
-          ${style.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary
+          ${style.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-opacity-90 bg-primary
         `}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
@@ -24,8 +24,8 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="Logo" className="h-10 w-10 object-contain" />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex'>Chandan<span className='sm:block hidden'>.Dev</span></p>
+          {/* <img src={logo} alt="Logo" className="h-10 w-10 object-contain" /> */}
+          <p className='text-white text-[22px] font-bold cursor-pointer flex border-b-4 border-secondary'>Chandan<span className='sm:block hidden'>.Dev</span></p>
         </Link>
         <ul className='list-none hidden sm:flex gap-10 flex-row'>
           {navLinks.map((link) => (
