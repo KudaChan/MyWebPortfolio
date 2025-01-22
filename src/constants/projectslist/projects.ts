@@ -1,14 +1,18 @@
-import { herbai, nike, apple } from "../../assets";
+import {
+  herbai,
+  apple,
+  nike,
+} from "../../assets";
 
-const frontend = [
+const projects = [
   {
-    name: "Herb AI (frontend)",
+    name: "Herb Ai",
     description:
-      "Frontend design of Herb Ai web application that allows users to identify plants with there leaves photo using machine learning.",
+      "Web-based platform that allows users to identify plants with there leaves photo using machine learning.Limited to 5 plant and server id down due to hardware limitations.",
     tags: [
       {
-        name: "nextjs",
-        color: "white-text-gradient",
+        name: "next",
+        color: "blue-text-gradient",
       },
       {
         name: "flask",
@@ -70,7 +74,29 @@ const frontend = [
     image: nike,
     source_code_link: "https://github.com/KudaChan/web-nike-clone",
     live_demo_link: "https://web-nike-clone-eight.vercel.app/",
+  },
+  {
+    name: "Nike Web Clone",
+    description:
+      "Clone of Nike website. This project was done to improve my front-end skills in react, tailwind and threejs.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "threejs",
+        color: "violet-text-gradient",
+      },
+    ],
+    image: nike,
+    source_code_link: "https://github.com/KudaChan/web-nike-clone",
+    live_demo_link: "https://web-nike-clone-eight.vercel.app/",
   }
 ];
 
-export default frontend;
+export default projects;

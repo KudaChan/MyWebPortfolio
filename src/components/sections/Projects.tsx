@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Tilt } from "react-tilt";
 
 import { style } from "../../style";
 import { SectionWrapper } from "../../hoc";
@@ -6,6 +7,7 @@ import { projects } from "../../constants";
 import { fadeIn, textVariant } from "../../utils/motion";
 
 import ProjectCard from "../ui/ProjectsCard";
+import { arrow_right } from "../../assets";
 
 const Projects = () => {
   return (
@@ -35,20 +37,35 @@ const Projects = () => {
             project={project}
           />
         ))}
+        <motion.div variants={fadeIn("up", "spring", 0.5, 0.75)}>
+          <Tilt
+            options={{
+              max: 45,
+              scale: 1,
+              speed: 450
+            }}
+            className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full h-full'
+          >
+            <div className="relative w-full h-full  flex flex-col justify-center items-center">
+              <div className="bg-secondary hover:bg-white w-24 h-24 object-cover rounded-full shadow-lg shadow-secondary">
+                <a
+                  href="/projects"
+                  target="_self"
+                  rel="noopener noreferrer"
+                  className="flex justify-center items-center w-full h-full"
+                >
+                  <img
+                    src={arrow_right}
+                    alt="arrow right"
+                    className="w-16 h-16 object-contain"
+                  />
+                </a>
+              </div>
+              <p className="text-secondary text-[16px] font-medium mt-5">View All Projects</p>
+            </div>
+          </Tilt>
+        </motion.div>
       </div>
-      <motion.div
-        className="mt-20 flex justify-center items-center"
-        variants={fadeIn("", "", 0.5, 1)}
-      >
-        <a
-          href="/projects"
-          target="_self"
-          rel="noopener noreferrer"
-          className="text-white text-[18px] font-medium bg-secondary/15 shadow-md shadow-secondary px-4 py-2 rounded-md hover:bg-secondary/50"
-        >
-          See My Other Projects
-        </a>
-      </motion.div>
     </>
   )
 }

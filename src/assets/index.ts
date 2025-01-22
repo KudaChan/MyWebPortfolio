@@ -7,6 +7,7 @@ import github from "./github.png";
 import x from "./x.png";
 import linkedin from "./linkedin.png";
 import arrow from "./arrow.png";
+import arrow_right from "./arrow_right.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -30,7 +31,10 @@ import threejs from "./tech/threejs.svg";
 import aatvish from "./company/aatvish.png";
 import jaypee from "./company/jaypee.jpg";
 
-import herbai from "./herbai.png"
+import herbai from "./project_image/herbai.png";
+import apple from "./project_image/apple.png";
+import nike from "./project_image/nike.png";
+import herbai_server from "./project_image/herbai_server.png";
 
 import copyright from "./copyright.png";
 
@@ -44,6 +48,7 @@ export {
   x,
   linkedin,
   arrow,
+  arrow_right,
   menu,
   close,
   css,
@@ -65,5 +70,8 @@ export {
   aatvish,
   jaypee,
   herbai,
+  herbai_server,
+  apple,
+  nike,
   copyright,
 };

@@ -4,7 +4,7 @@ const fullstack = [
   {
     name: "Herb Ai",
     description:
-      "Web-based platform that allows users to identify plants with there leaves photo using machine learning.(Number of plant limited to 5.)",
+      "Web-based platform that allows users to identify plants with there leaves photo using machine learning.Limited to 5 plant and server id down due to hardware limitations.",
     tags: [
       {
         name: "next",

@@ -45,16 +45,18 @@ const ProjectCard: React.FC<projectCardProps> = (projectArgs) => {
                 className="w-1/2 h-1/2 object-contain"
               />
             </div>
-            <div
-              onClick={() => window.open(projectArgs.project.live_demo_link, `_blank`)}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-            >
-              <img
-                src={arrow}
-                alt="arrow"
-                className="w-1/2 h-1/2 object-contain"
-              />
-            </div>
+            {projectArgs.project.live_demo_link === "" ? null :
+              <div
+                onClick={() => window.open(projectArgs.project.live_demo_link, `_blank`)}
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              >
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-1/2 h-1/2 object-contain"
+                />
+              </div>
+            }
           </div>
         </div>
         <div className="mt-5">

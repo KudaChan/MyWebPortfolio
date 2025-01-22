@@ -1,9 +1,9 @@
 import {
   aatvish,
   jaypee,
-} from '../assets';
+} from '../../assets';
 
-const allexperiences = [
+const experiences = [
   {
     title: "Full stack Developer",
     position: "Intern",
@@ -32,7 +32,7 @@ const allexperiences = [
       "Participating in code reviews and providing constructive feedback to other developers.",
       "Explore blockchain technology.",
     ],
-  },
+  }
 ];
 
-export default allexperiences;
+export default experiences;
