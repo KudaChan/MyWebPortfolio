@@ -59,7 +59,7 @@ const genStar = (r: number) => {
 }
 
 export const Stars: ForwardRefComponent<Props, Points> = /* @__PURE__ */ React.forwardRef(
-  ({ radius = 100, depth = 50, count = 10000, saturation = 0, factor = 4, fade = false, speed = 1.25 }: Props, ref) => {
+  ({ radius = 100, depth = 50, count = 7500, saturation = 0, factor = 4, fade = false, speed = 1.25 }: Props, ref) => {
     const material = React.useRef<StarfieldMaterial>()
     const [position, color, size] = React.useMemo(() => {
       const positions: number[] = []
@@ -113,7 +113,6 @@ const StarsCanvas = () => {
         <Suspense fallback={null}>
           <Stars />
         </Suspense>
-
         <Preload all />
       </Canvas>
     </div>
