@@ -38,7 +38,7 @@ const Experience = () => {
           rel="noopener noreferrer"
           className="text-white text-[18px] font-medium bg-secondary/15 shadow-md shadow-secondary px-4 py-2 rounded-md hover:bg-secondary/50"
         >
-          Look at Professional Journey
+          Look at My Professional Journey
         </a>
       </motion.div>
     </>
