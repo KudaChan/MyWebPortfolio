@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 import { style } from "../../style";
 import { PageWrapper } from "../../hoc";
-import { fullstack, frontend, backend } from "../../constants";
+import { fullstack, frontend, backend, ml } from "../../constants";
 import { fadeIn, textVariant } from "../../utils/motion";
 
 import ProjectCard from "./ProjectsCard";
@@ -74,7 +74,23 @@ const AllProjects = () => {
                 project={project}
               />
             ))}
-          </div>
+        </div>
+        <motion.div
+          variants={textVariant(0)}
+        >
+          <h3 className="text-white font-semibold md:text-[40px] sm:text-[30px] xs:text-[20px] text-[10px] mt-10 border-b-2 border-secondary pt-5">
+            Machine Learning Projects.
+          </h3>
+        </motion.div>
+        <div className="mt-5 flex flex-wrap gap-7">
+          {ml.map((project, index) => (
+            <ProjectCard
+              key={`project-${index}`}
+              index={index}
+              project={project}
+            />
+          ))}
+        </div>
       </div>
     </>
   )

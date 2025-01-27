@@ -35,6 +35,8 @@ import herbai from "./project_image/herbai.png";
 import apple from "./project_image/apple.png";
 import nike from "./project_image/nike.png";
 import herbai_server from "./project_image/herbai_server.png";
+import ai_plant from "./project_image/ai_plant.png";
+import crop_ai from "./project_image/crop_ai.png";
 
 import copyright from "./copyright.png";
 
@@ -73,5 +75,7 @@ export {
   herbai_server,
   apple,
   nike,
+  ai_plant,
+  crop_ai,
   copyright,
 };

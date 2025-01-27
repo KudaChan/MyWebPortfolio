@@ -27,6 +27,7 @@ import projects from "./projectslist/projects";
 import fullstack from "./projectslist/fullstack";
 import frontend from "./projectslist/frontend";
 import backend from "./projectslist/backend";
+import ml from "./projectslist/ML";
 
 import allexperiences from "./experiencelist/allexperience";
 import experiences from "./experiencelist/experience";
@@ -151,4 +152,4 @@ const footerIcon = [
   }
 ]
 
-export { services, technologies, experiences, projects, footerIcon, fullstack, frontend, backend, allexperiences };
+export { services, technologies, experiences, projects, footerIcon, fullstack, frontend, backend, ml, allexperiences };
