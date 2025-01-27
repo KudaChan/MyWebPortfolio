@@ -44,7 +44,7 @@ const About = () => {
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] text-justify'
       >
         I am a web developer with a passion for creating and building things. I have experience working with a variety of technologies such as React, Next.js, Node.js, Nest.js and Express and programming languages like Typescript, Javascript, C# and Solidity and also familiar with MongoDB and Postgres database.
         I am a quick learner and always looking to learn new things and improve my skills.I am also interesting in new emerging technologies and currently exploring BlockChain.

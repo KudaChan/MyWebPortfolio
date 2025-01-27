@@ -22,7 +22,7 @@ const AllProjects = () => {
         <div className="w-full flex">
           <motion.p
             variants={fadeIn("", "", 0.1, 1)}
-            className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+            className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] text-justify"
           >
             Following projects showcase my skills and experience in web development through real-world examples of my work. Each project is briefly described with a link to the live demo and the source code repository. It reflects my passion and ability to solve complex problems, work with different technologies, and deliver high-quality products.
           </motion.p>
