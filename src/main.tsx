@@ -10,19 +10,17 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: 'projects',
-        element: <All_Projects />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: 'experience',
-        element: <All_Experience />,
-        errorElement: <ErrorPage />,
-      }
-    ],
   },
+  {
+    path: '/projects',
+    element: <All_Projects />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/experience',
+    element: <All_Experience />,
+    errorElement: <ErrorPage />,
+  }
 ])
 
 createRoot(document.getElementById('root')!).render(
