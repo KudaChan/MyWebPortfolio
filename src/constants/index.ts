@@ -27,7 +27,7 @@ import projects from "./projectslist/projects";
 import fullstack from "./projectslist/fullstack";
 import frontend from "./projectslist/frontend";
 import backend from "./projectslist/backend";
-import ml from "./projectslist/ML";
+import ml from "./projectslist/ml";
 
 import allexperiences from "./experiencelist/allexperience";
 import experiences from "./experiencelist/experience";
