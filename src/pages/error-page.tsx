@@ -7,7 +7,7 @@ const ErrorPage = () => {
   const error = useRouteError();
   console.error(error);
   return (
-    <div className={`${style.padding} w-full mx-auto relative z-0 bg-primary`}>
+    <div className={`${style.padding} w-full mx-auto relative z-0 bg-primary max-h-screen`}>
       <div className=" bg-hero-pattern bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center h-screen w-full">
         <div className="flex flex-col justify-center items-center">
           <h1 className={style.sectionHeadText}>Oops!</h1>

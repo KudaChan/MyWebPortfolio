@@ -7,9 +7,10 @@ import { All_Projects, All_Experience, ErrorPage } from './pages';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<ErrorPage />}>,
-      <Route path='projects' element={<All_Projects />} errorElement={<ErrorPage />} />
-      <Route path='experience' element={<All_Experience />} errorElement={<ErrorPage />} />
+    <Route >,
+      <Route path="/" element={<App />} errorElement={<ErrorPage />} />
+      <Route path='/projects' element={<All_Projects />} errorElement={<ErrorPage />} />
+      <Route path='/experience' element={<All_Experience />} errorElement={<ErrorPage />} />
     </Route>
   )
 );
