@@ -33,7 +33,7 @@ const Experience = () => {
         variants={fadeIn("", "", 0.5, 1)}
       >
         <a
-          href="/home/experience"
+          href="/experience"
           target="_self"
           rel="noopener noreferrer"
           className="text-white text-[18px] font-medium bg-secondary/15 shadow-md shadow-secondary px-4 py-2 rounded-md hover:bg-secondary/50"
