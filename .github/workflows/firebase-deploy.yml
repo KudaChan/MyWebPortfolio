@@ -22,7 +22,7 @@ jobs:
       - name: Install Firebase CLI
         uses: w9jds/firebase-action@v1.1.0
         with:
-          args: hosting:disable # Optional
+          args: hosting:enable
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v1.1.0
