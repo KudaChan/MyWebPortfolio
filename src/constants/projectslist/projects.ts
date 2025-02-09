@@ -75,28 +75,6 @@ const projects = [
     source_code_link: "https://github.com/KudaChan/web-nike-clone",
     live_demo_link: "https://web-nike-clone-eight.vercel.app/",
   },
-  {
-    name: "Nike Web Clone",
-    description:
-      "Clone of Nike website. This project was done to improve my front-end skills in react, tailwind and threejs.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "threejs",
-        color: "violet-text-gradient",
-      },
-    ],
-    image: nike,
-    source_code_link: "https://github.com/KudaChan/web-nike-clone",
-    live_demo_link: "https://web-nike-clone-eight.vercel.app/",
-  }
 ];
 
 export default projects;
