@@ -7,7 +7,7 @@ import App from './App.tsx';
 import { All_Projects, All_Experience, ErrorPage } from './pages';
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: "https://81ad86faf94ad08805ce0d30f1829c6c@o4507709618388992.ingest.us.sentry.io/4508790529982464",
   integrations: [
     Sentry.browserTracingIntegration(),
     Sentry.replayIntegration(),
