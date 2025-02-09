@@ -4,7 +4,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import Loader from '../ui/Loader';
 
-const Computer = ({isMobile}: {isMobile: boolean}) => {
+const Computer = ({ isMobile, isSmallLaptop }: { isMobile: boolean, isSmallLaptop: boolean }) => {
   const computer = useGLTF('./desktop_pc/scene.gltf');
 
   return (
@@ -21,8 +21,8 @@ const Computer = ({isMobile}: {isMobile: boolean}) => {
       />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.75 : 1}
-        position={isMobile ? [0, -3, -2] : [0, -3.25, 0.5]}
+        scale={isMobile ? 0.75 : isSmallLaptop ? 0.85 : 1}
+        position={isMobile ? [-3, -4, -1.75] : isSmallLaptop ? [0, -3.25, 0.5] : [0, -3.25, 0.5]}
         rotation={[0, -5, 0]}
       />
     </mesh>
@@ -31,33 +31,42 @@ const Computer = ({isMobile}: {isMobile: boolean}) => {
 
 const ComputerCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallLaptop, setIsSmallLaptop] = useState(false);
 
   useEffect(() => {
-    // Add a listerner to check if the screen size is less than 500px
-    const mediaQuery = window.matchMedia('max-width: 500px');
+    // Add listeners to check if the screen size is less than 500px or between 500px and 1024px
+    const mobileMediaQuery = window.matchMedia('(max-width: 500px)');
+    const smallLaptopMediaQuery = window.matchMedia('(min-width: 501px) and (max-width: 1600px)');
 
-    // Set the initial state based on the media query
-    setIsMobile(mediaQuery.matches);
+    // Set the initial state based on the media queries
+    setIsMobile(mobileMediaQuery.matches);
+    setIsSmallLaptop(smallLaptopMediaQuery.matches);
 
-    // Define a function to handle the media query change
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+    // Define functions to handle the media query changes
+    const handleMobileMediaQueryChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
-    }
+    };
 
-    // Add the event listener to the media query
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    const handleSmallLaptopMediaQueryChange = (event: MediaQueryListEvent) => {
+      setIsSmallLaptop(event.matches);
+    };
 
-    // Remove the event listener when the component unmounts to avoid memory leaks
+    // Add the event listeners to the media queries
+    mobileMediaQuery.addEventListener('change', handleMobileMediaQueryChange);
+    smallLaptopMediaQuery.addEventListener('change', handleSmallLaptopMediaQueryChange);
+
+    // Remove the event listeners when the component unmounts to avoid memory leaks
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
-    }
-  },[])
+      mobileMediaQuery.removeEventListener('change', handleMobileMediaQueryChange);
+      smallLaptopMediaQuery.removeEventListener('change', handleSmallLaptopMediaQueryChange);
+    };
+  }, []);
 
   return (
     <Canvas
       frameloop="demand"
       shadows
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [20, 3, 5], fov: 35 }}
       gl = {{preserveDrawingBuffer: true}}
     >
       <Suspense fallback={<Loader />}>
@@ -66,7 +75,7 @@ const ComputerCanvas = () => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <Computer isMobile={isMobile} />
+        <Computer isMobile={isMobile} isSmallLaptop={isSmallLaptop} />
       </Suspense>
 
       <Preload all />
