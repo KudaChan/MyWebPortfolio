@@ -1,6 +1,6 @@
-import { Suspense, useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
+import { Suspense, useState, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
 
 interface BallProps {
   imgUrl: string;
@@ -33,39 +33,25 @@ const Ball = ({ imgUrl }: BallProps) => {
 };
 
 const BallCanvas = ({ imgUrl }: BallProps) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [domLoaded, setDomLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    setDomLoaded(true);
     
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    setIsMobile(mediaQuery.matches);
-
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      setIsMobile(event.matches);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    // Only add listener if the browser supports addEventListener
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleMediaQueryChange);
-    } else {
-      // Fallback for older browsers
-      mediaQuery.addListener(handleMediaQueryChange);
-    }
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 
     return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', handleMediaQueryChange);
-      } else {
-        // Fallback for older browsers
-        mediaQuery.removeListener(handleMediaQueryChange);
-      }
+      window.removeEventListener('resize', checkMobile);
     };
   }, []);
 
-  if (!isMounted) return null;
-  if (isMobile) {
+  if (!domLoaded || isMobile) {
     return (
       <img 
         src={imgUrl}
@@ -76,17 +62,26 @@ const BallCanvas = ({ imgUrl }: BallProps) => {
   }
 
   return (
-    <Canvas
-      frameloop="demand"
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
-    >
-      <Suspense fallback={null}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={imgUrl} />
-      </Suspense>
-      <Preload all />
-    </Canvas>
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <Canvas
+        frameloop="demand"
+        gl={{ 
+          preserveDrawingBuffer: true,
+          powerPreference: "high-performance",
+          antialias: true,
+        }}
+        dpr={[1, 2]}
+      >
+        <Suspense fallback={null}>
+          <OrbitControls 
+            enableZoom={false}
+            enablePan={false}
+          />
+          <Ball imgUrl={imgUrl} />
+        </Suspense>
+        <Preload all />
+      </Canvas>
+    </div>
   );
 };
 

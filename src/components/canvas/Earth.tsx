@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -17,33 +17,54 @@ const Earth = () => {
 }
 
 const EarthCanvas = () => {
-  return (
-    <Canvas
-      shadows
-      frameloop="demand"
-      gl={{ preserveDrawingBuffer: true }}
-      camera={{
-        fov: 45,
-        near: 0.1,
-        far: 200,
-        position: [-4, 3, 6],
-      }}
-    >
-      <Suspense
-        fallback={<Loader />}
-      >
-        <OrbitControls
-          autoRotate={true}
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Earth />
+  const [domLoaded, setDomLoaded] = useState(false);
 
+  useEffect(() => {
+    setDomLoaded(true);
+    return () => {
+      // Cleanup any Three.js resources
+      useGLTF.preload('./planet/scene.gltf');
+    };
+  }, []);
+
+  if (!domLoaded) {
+    return <Loader />;
+  }
+
+  return (
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <Canvas
+        shadows
+        frameloop="demand"
+        gl={{ 
+          preserveDrawingBuffer: true,
+          powerPreference: "high-performance",
+          antialias: true,
+        }}
+        camera={{
+          fov: 45,
+          near: 0.1,
+          far: 200,
+          position: [-4, 3, 6],
+        }}
+        onCreated={({ gl }) => {
+          gl.setClearColor('#000000', 0);
+        }}
+      >
+        <Suspense fallback={<Loader />}>
+          <OrbitControls
+            autoRotate={true}
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
+            enablePan={false}
+          />
+          <Earth />
+        </Suspense>
         <Preload all />
-      </Suspense>
-    </Canvas>
-  )
-}
+      </Canvas>
+    </div>
+  );
+};
 
 export default EarthCanvas;

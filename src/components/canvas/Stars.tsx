@@ -1,122 +1,67 @@
-import { Suspense } from 'react';
-import { Preload } from '@react-three/drei';
-import *  as React from 'react'
-import { ReactThreeFiber, useFrame, Canvas } from '@react-three/fiber'
-import { Points, Vector3, Spherical, Color, AdditiveBlending, ShaderMaterial } from 'three'
-import { ForwardRefComponent } from '../../helpers/ts-utils'
-import { version } from '../../helpers/constants'
+import { useState, useRef, Suspense, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Points, PointMaterial } from '@react-three/drei';
+import * as random from 'maath/random/dist/maath-random.esm';
+import { Points as ThreePoints } from 'three';
 
-type Props = {
-  radius?: number
-  depth?: number
-  count?: number
-  factor?: number
-  saturation?: number
-  fade?: boolean
-  speed?: number
-}
+type StarsProps = JSX.IntrinsicElements['points'];
 
-class StarfieldMaterial extends ShaderMaterial {
-  constructor() {
-    super({
-      uniforms: { time: { value: 0.0 }, fade: { value: 1.0 } },
-      vertexShader: /* glsl */ `
-      uniform float time;
-      attribute float size;
-      varying vec3 vColor;
-      void main() {
-        vColor = color;
-        vec4 mvPosition = modelViewMatrix * vec4(position, 0.5);
-        gl_PointSize = size * (30.0 / -mvPosition.z) * (3.0 + sin(time + 100.0));
-        gl_Position = projectionMatrix * mvPosition;
-      }`,
-      fragmentShader: /* glsl */ `
-      uniform sampler2D pointTexture;
-      uniform float fade;
-      varying vec3 vColor;
-      void main() {
-        float opacity = 1.0;
-        if (fade == 1.0) {
-          float d = distance(gl_PointCoord, vec2(0.5, 0.5));
-          opacity = 1.0 / (1.0 + exp(16.0 * (d - 0.25)));
-        }
-        gl_FragColor = vec4(vColor, opacity);
+const Stars = (props: StarsProps) => {
+  const ref = useRef<ThreePoints>(null);
+  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.2 }));
 
-        #include <tonemapping_fragment>
-	      #include <${version >= 154 ? 'colorspace_fragment' : 'encodings_fragment'}>
-      }`,
-    })
-  }
-}
-declare module 'react' {
-  interface IntrinsicElements {
-    starfieldMaterial: ReactThreeFiber.MaterialNode<StarfieldMaterial, []>
-  }
-}
+  useFrame((state, delta) => {
+    if (ref.current) {
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
+    }
+  });
 
-const genStar = (r: number) => {
-  return new Vector3().setFromSpherical(new Spherical(r, Math.acos(1 - Math.random() * 2), Math.random() * 2 * Math.PI))
-}
-
-export const Stars: ForwardRefComponent<Props, Points> = /* @__PURE__ */ React.forwardRef(
-  ({ radius = 100, depth = 50, count = 7500, saturation = 0, factor = 4, fade = false, speed = 1.25 }: Props, ref) => {
-    const material = React.useRef<StarfieldMaterial>()
-    const [position, color, size] = React.useMemo(() => {
-      const positions: number[] = []
-      const colors: number[] = []
-      const sizes = Array.from({ length: count }, () => (0.5 + 0.5 * Math.random()) * factor)
-      const color = new Color()
-      let r = radius + depth
-      const increment = depth / count
-      for (let i = 0; i < count; i++) {
-        r -= increment * Math.random()
-        positions.push(...genStar(r).toArray())
-        color.setHSL(i / count, saturation, 0.9)
-        colors.push(color.r, color.g, color.b)
-      }
-      return [new Float32Array(positions), new Float32Array(colors), new Float32Array(sizes)]
-    }, [count, depth, factor, radius, saturation])
-    useFrame(
-      (state) => material.current && (material.current.uniforms.time.value = state.clock.getElapsedTime() * speed)
-    )
-
-    const [starfieldMaterial] = React.useState(() => new StarfieldMaterial())
-
-    return (
-      <points ref={ref as React.MutableRefObject<Points>}>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[position, 3]} />
-          <bufferAttribute attach="attributes-color" args={[color, 3]} />
-          <bufferAttribute attach="attributes-size" args={[size, 1]} />
-        </bufferGeometry>
-        <primitive
-          ref={material}
-          object={starfieldMaterial}
-          attach="material"
-          blending={AdditiveBlending}
-          uniforms-fade-value={fade}
-          depthWrite={false}
+  return (
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points
+        ref={ref}
+        positions={sphere}
+        stride={3}
+        frustumCulled
+        {...props}
+      >
+        <PointMaterial
           transparent
-          vertexColors
+          color="#f272c8"
+          size={0.002}
+          sizeAttenuation={true}
+          depthWrite={false}
         />
-      </points>
-    )
-  }
-)
+      </Points>
+    </group>
+  );
+};
 
 const StarsCanvas = () => {
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
+  if (!domLoaded) return null;
+
   return (
-    <div className="absolute inset-0 z-[-1] w-full h-auto">
+    <div className="w-full h-auto absolute inset-0 z-[-1]">
       <Canvas
-        camera={{ position: [0, 0, 5] }}
+        camera={{ position: [0, 0, 1] }}
+        gl={{
+          powerPreference: 'high-performance',
+          antialias: true,
+        }}
       >
         <Suspense fallback={null}>
           <Stars />
         </Suspense>
-        <Preload all />
       </Canvas>
     </div>
-  )
-}
+  );
+};
 
-export default StarsCanvas
+export default StarsCanvas;
