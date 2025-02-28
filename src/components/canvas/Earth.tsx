@@ -1,8 +1,7 @@
 import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-
-import Loader from "../ui/Loader";
+import { CanvasLoader, DOMLoader } from "../ui/Loader";
 
 const Earth = () => {
   const earth = useGLTF('./planet/scene.gltf');
@@ -13,8 +12,8 @@ const Earth = () => {
       position-y={0}
       rotation-y={0}
     />
-  )
-}
+  );
+};
 
 const EarthCanvas = () => {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -22,13 +21,12 @@ const EarthCanvas = () => {
   useEffect(() => {
     setDomLoaded(true);
     return () => {
-      // Cleanup any Three.js resources
       useGLTF.preload('./planet/scene.gltf');
     };
   }, []);
 
   if (!domLoaded) {
-    return <Loader />;
+    return <DOMLoader />;
   }
 
   return (
@@ -51,7 +49,7 @@ const EarthCanvas = () => {
           gl.setClearColor('#000000', 0);
         }}
       >
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
             autoRotate={true}
             enableZoom={false}

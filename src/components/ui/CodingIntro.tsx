@@ -80,12 +80,13 @@ if (youAreHiring) {
     background: 'linear-gradient(145deg, rgba(23, 25, 35, 0.95), rgba(27, 32, 46, 0.95))',
     padding: isMobile ? '1em' : '1.5em',
     borderRadius: '0.5em',
-    fontSize: isMobile ? '14px' : '18px',
+    fontSize: isMobile ? '14px' : '18px', // Slightly reduced from 18px
     margin: 0,
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     overflow: 'auto',
-    maxHeight: isMobile ? '70vh' : 'none',
+    maxHeight: isMobile ? '70vh' : '80vh', // Added maxHeight for desktop
+    width: '100%', // Ensure it takes full width
   };
 
   return (
@@ -93,7 +94,7 @@ if (youAreHiring) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="code-window relative w-full max-w-7xl rounded-lg overflow-hidden"
+      className="code-window relative w-full max-w-full rounded-lg overflow-hidden" // Changed max-w-7xl to max-w-full
     >
       {/* Code Window Header */}
       <div className="absolute top-0 left-0 right-0 h-8 sm:h-10 bg-gradient-to-r from-[#2d2d2d] to-[#1a1a1a] rounded-t-lg flex items-center px-2 sm:px-4 gap-1 sm:gap-2 border-b border-[#ffffff1a]">
