@@ -1,29 +1,22 @@
-import { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
-
-import Loader from "../ui/Loader";
+import { Suspense, useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
 
 interface BallProps {
   imgUrl: string;
 }
 
-const Ball: React.FC<BallProps> = (imgUrl) => {
-  const [decal] = useTexture([imgUrl.imgUrl])
+const Ball = ({ imgUrl }: BallProps) => {
+  const [decal] = useTexture([imgUrl]);
+
   return (
-    <Float
-      speed={1.75}
-      rotationIntensity={1}
-      floatIntensity={2}
-    >
+    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
           color="#fff8eb"
-          metalness={0.2}
-          roughness={0.5}
           polygonOffset
           polygonOffsetFactor={-5}
           flatShading
@@ -31,18 +24,21 @@ const Ball: React.FC<BallProps> = (imgUrl) => {
         <Decal
           position={[0, 0, 1]}
           rotation={[2 * Math.PI, 0, 6.25]}
+          scale={1}
           map={decal}
         />
       </mesh>
     </Float>
-  )
-}
+  );
+};
 
-// Separate Ball component for code splitting
 const BallCanvas = ({ imgUrl }: BallProps) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     const mediaQuery = window.matchMedia('(max-width: 768px)');
     setIsMobile(mediaQuery.matches);
 
@@ -50,16 +46,30 @@ const BallCanvas = ({ imgUrl }: BallProps) => {
       setIsMobile(event.matches);
     };
 
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
-    return () => mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    // Only add listener if the browser supports addEventListener
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleMediaQueryChange);
+    } else {
+      // Fallback for older browsers
+      mediaQuery.addListener(handleMediaQueryChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      } else {
+        // Fallback for older browsers
+        mediaQuery.removeListener(handleMediaQueryChange);
+      }
+    };
   }, []);
 
-  // Don't render 3D on mobile
+  if (!isMounted) return null;
   if (isMobile) {
     return (
       <img 
-        src={imgUrl} 
-        alt="technology" 
+        src={imgUrl}
+        alt="technology"
         className="w-28 h-28 object-contain"
       />
     );
@@ -68,9 +78,10 @@ const BallCanvas = ({ imgUrl }: BallProps) => {
   return (
     <Canvas
       frameloop="demand"
+      dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
     >
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={null}>
         <OrbitControls enableZoom={false} />
         <Ball imgUrl={imgUrl} />
       </Suspense>
