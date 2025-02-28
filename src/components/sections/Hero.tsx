@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-
 import { style } from '../../style';
-import { ComputerCanvas } from '../canvas';
+import CodingIntro from '../ui/CodingIntro';
+
 
 const Hero = () => {
   return (
@@ -11,21 +11,18 @@ const Hero = () => {
           <div className='w-5 h-5 rounded-full bg-[#4e1c75ee]' />
           <div className='w-1 sm:h-80 h-40 violet-gradient'/>
         </div>
-        <div>
-          <h1 className={`${style.heroHeadText} text-white`}>Hi, I'm <span className='text-[#8758acee] '>Chandan</span></h1>
-          <p className={`${style.heroSubText} mt-2 text-white-100 text-justify`}>
-            I'm a web developer and Tech Enthusiasts.
-            <br className='sm:block hidden' />
-            <br/>
-            I specialize in creating modern and user-friendly interfaces and backends.
-            I'm currently looking for opportunities to collaborate with talented individuals and help clients build their businesses.
-            <br />
-            <br />
+        <div className='w-full'>
+          <h1 className={`${style.heroHeadText} text-white`}>
+            Hi, I'm <span className='text-[#8758acee]'>Chandan</span>
+          </h1>
+          <p className={`${style.heroSubText} mt-2 text-white-100`}>
+            Welcome to my digital space
           </p>
+          <div className="mt-8">
+            <CodingIntro />
+          </div>
         </div>
       </div>
-
-      <ComputerCanvas />
 
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
         <a href="#about">
@@ -45,7 +42,7 @@ const Hero = () => {
         </a>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Hero;

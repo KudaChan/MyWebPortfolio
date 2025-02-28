@@ -11,16 +11,16 @@ import {
   csharp,
   nextjs,
   postgresql,
-  // redux,
+  redux,
   tailwind,
   nodejs,
   mongodb,
   git,
-  // docker,
+  docker,
   threejs,
   github,
   x,
-  linkedin
+  linkedin,
 } from "../assets";
 
 import projects from "./projectslist/projects";
@@ -70,7 +70,6 @@ const services = [
   },
 ];
 
-// Technologies
 const technologies = [
   {
     name: "HTML 5",
@@ -79,10 +78,6 @@ const technologies = [
   {
     name: "CSS 3",
     icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
   },
   {
     name: "TypeScript",
@@ -100,10 +95,10 @@ const technologies = [
     name: "Next JS",
     icon: nextjs,
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
+  {
+    name: "Redux Toolkit",
+    icon: redux,
+  },
   {
     name: "Tailwind CSS",
     icon: tailwind,
@@ -121,17 +116,17 @@ const technologies = [
     icon: postgresql,
   },
   {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
     name: "git",
     icon: git,
   },
-  // {
-  //   name: "docker",
-  //   icon: docker,
-  // },
+  {
+    name: "Github",
+    icon: github,
+  },
+  {
+    name: "docker",
+    icon: docker,
+  },
 ];
 
 const footerIcon = [
