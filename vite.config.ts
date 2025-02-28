@@ -8,7 +8,7 @@ export default defineConfig({
     compression({
       algorithm: 'gzip',
       ext: '.gz',
-      threshold: 1024, // Only compress files larger than 1KB
+      threshold: 1024,
       deleteOriginFile: false,
     }),
     compression({
@@ -40,5 +40,12 @@ export default defineConfig({
       },
     },
     reportCompressedSize: false,
+    assetsInlineLimit: 4096,
+    sourcemap: false,
+  },
+  server: {
+    headers: {
+      'Cache-Control': 'public, max-age=31536000',
+    },
   },
 });

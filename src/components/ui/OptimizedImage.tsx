@@ -6,6 +6,7 @@ interface OptimizedImageProps {
   className?: string;
   width?: number;
   height?: number;
+  priority?: boolean;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -13,18 +14,25 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   alt,
   className,
   width,
-  height
+  height,
+  priority = false
 }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const img = new Image();
     img.src = src;
     img.onload = () => setLoading(false);
+    img.onerror = () => setError(true);
   }, [src]);
 
+  if (error) return <div className={`${className} bg-tertiary`}>Error loading image</div>;
+
   return (
-    <>
+    <picture>
+      <source type="image/webp" srcSet={`${src}?format=webp`} />
+      <source type="image/jpeg" srcSet={src} />
       {loading && (
         <div 
           className={`${className} bg-tertiary animate-pulse`}
@@ -37,10 +45,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         className={`${className} ${loading ? 'hidden' : 'block'}`}
         width={width}
         height={height}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
         decoding="async"
+        fetchPriority={priority ? "high" : "auto"}
       />
-    </>
+    </picture>
   );
 };
 
