@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import { useNavigate } from 'react-router-dom';
 import { style } from "../../style";
 import { PageWrapper } from "../../hoc";
 import { fullstack, frontend, backend, ml } from "../../constants";
@@ -8,11 +8,23 @@ import { fadeIn, textVariant } from "../../utils/motion";
 import ProjectCard from "./ProjectsCard";
 
 const AllProjects = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={`${style.padding} mx-auto max-w-7xl flex flex-1 flex-col relative z-0`}>
+        {/* Back button */}
+        <motion.button
+          onClick={() => navigate('/')}
+          className="absolute top-8 left-8 bg-secondary hover:bg-white text-primary px-4 py-2 rounded-full transition-all duration-300"
+          variants={fadeIn("right", "spring", 0.1, 1)}
+        >
+          ← Back
+        </motion.button>
+
         <motion.div
           variants={textVariant(0)}
+          className="mt-10"
         >
           <p className={style.sectionSubText}>My Work</p>
           <h2 className={style.sectionHeadText}>

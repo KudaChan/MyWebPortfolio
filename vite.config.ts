@@ -1,22 +1,28 @@
-import { sentryVitePlugin } from "@sentry/vite-plugin";
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), sentryVitePlugin({
-    org: "chandan-kumar-yg",
-    project: "my-portfolio"
-  }), sentryVitePlugin({
-    org: "chandan-kumar-yg",
-    project: "my-portfolio"
-  })],
+import { sentryVitePlugin } from "@sentry/vite-plugin";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
+export default defineConfig({
+  plugins: [
+    react(),
+    sentryVitePlugin({
+      org: "chandan-kumar-yg",
+      project: "my-portfolio"
+    })
+  ],
   server: {
     cors: true
   },
-
   build: {
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion', 'react-tilt'],
+        }
+      }
+    }
   }
 });

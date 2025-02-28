@@ -1,23 +1,7 @@
-import {
-  aatvish,
-  jaypee,
-} from '../../assets';
+import { aatvish, jaypee } from '../../assets';
 
+// Only include the most recent experiences
 const experiences = [
-  {
-    title: "Full stack Developer",
-    position: "Intern",
-    company_name: "Aatvis Systems",
-    icon: aatvish,
-    iconBg: "#E6DEDD",
-    date: "July 2024 - October 2024",
-    points: [
-      "Developing and maintaining web applications using Next.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
   {
     title: "Full stack Developer",
     position: "Freelancer | Student",
@@ -32,7 +16,21 @@ const experiences = [
       "Participating in code reviews and providing constructive feedback to other developers.",
       "Explore blockchain technology.",
     ],
-  }
+  },
+  {
+    title: "Full stack Developer",
+    position: "Intern",
+    company_name: "Aatvis Systems",
+    icon: aatvish,
+    iconBg: "#E6DEDD",
+    date: "July 2024 - October 2024",
+    points: [
+      "Developing and maintaining web applications using Next.js and other related technologies.",
+      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      "Implementing responsive design and ensuring cross-browser compatibility.",
+      "Participating in code reviews and providing constructive feedback to other developers.",
+    ],
+  },
 ];
 
 export default experiences;
