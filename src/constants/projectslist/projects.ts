@@ -2,9 +2,32 @@ import {
   herbai,
   apple,
   nike,
+  mis,
 } from "../../assets";
 
 const projects = [
+  {
+    name: "Management Information System",
+    description:
+      "A comprehensive web-based MIS solution that streamlines organizational data management, reporting, and decision-making processes. Features include user management, real-time analytics, automated reporting, and role-based access control.",
+    tags: [
+      {
+        name: "next.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "nest.js",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: mis,
+    source_code_link: "https://github.com/KudaChan/Information-Mangament-System",
+    live_demo_link: " mis-client.vercel.app ",  // Add if available
+  },
   {
     name: "Herb Ai",
     description:

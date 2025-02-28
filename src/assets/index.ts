@@ -32,6 +32,7 @@ import aatvish from "./company/aatvish.png";
 import jaypee from "./company/jaypee.jpg";
 
 import herbai from "./project_image/herbai.png";
+import mis from "./project_image/mis.png";
 import apple from "./project_image/apple.png";
 import nike from "./project_image/nike.png";
 import herbai_server from "./project_image/herbai_server.png";
@@ -72,6 +73,7 @@ export {
   aatvish,
   jaypee,
   herbai,
+  mis,
   herbai_server,
   apple,
   nike,

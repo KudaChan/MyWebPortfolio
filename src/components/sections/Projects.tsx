@@ -46,7 +46,7 @@ const Projects = () => {
             }}
             className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full h-full'
           >
-            <div className="relative w-full h-full  flex flex-col justify-center items-center">
+            <div className="relative w-full h-full flex flex-col justify-center items-center">
               <div className="bg-secondary hover:bg-white w-24 h-24 object-cover rounded-full shadow-lg shadow-secondary">
                 <a
                   href="/projects"

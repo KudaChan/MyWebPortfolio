@@ -26,9 +26,10 @@ const ProjectCard: React.FC<projectCardProps> = (projectArgs) => {
           scale: 1,
           speed: 450
         }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full h-[500px] flex flex-col'
       >
-        <div className="relative w-full h-[230px]">
+        {/* Image container with fixed height */}
+        <div className="relative w-full h-[230px] flex-shrink-0">
           <img
             src={projectArgs.project.image}
             alt={projectArgs.project.name}
@@ -59,17 +60,22 @@ const ProjectCard: React.FC<projectCardProps> = (projectArgs) => {
             }
           </div>
         </div>
-        <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{projectArgs.project.name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{projectArgs.project.description}</p>
-        </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {projectArgs.project.tags.map((tag) => (
-            <p key={projectArgs.project.name} className={`text-[14px] ${tag.color}`}>
-              #{tag.name}
-            </p>
-          ))}
+        {/* Content container with flex-grow */}
+        <div className="flex flex-col flex-grow">
+          <div className="mt-5">
+            <h3 className="text-white font-bold text-[24px] line-clamp-1">{projectArgs.project.name}</h3>
+            <p className="mt-2 text-secondary text-[14px] line-clamp-4 text-justify">{projectArgs.project.description}</p>
+          </div>
+
+          {/* Tags pushed to bottom with margin-top auto */}
+          <div className="mt-auto pt-4 flex flex-wrap gap-2">
+            {projectArgs.project.tags.map((tag) => (
+              <p key={`${projectArgs.project.name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
+                #{tag.name}
+              </p>
+            ))}
+          </div>
         </div>
       </Tilt>
     </motion.div>
