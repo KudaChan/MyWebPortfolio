@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
 
@@ -38,25 +38,45 @@ const Ball: React.FC<BallProps> = (imgUrl) => {
   )
 }
 
-const BallCanvas = ({ icon }: {icon:string}) => {
-  return (
-    <>
-      <Canvas
-        frameloop="demand"
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <Suspense fallback={<Loader />}>
-          <OrbitControls
-            enableZoom={false}
-          />
-          <Ball imgUrl={icon} />
-          
-        </Suspense>
+// Separate Ball component for code splitting
+const BallCanvas = ({ imgUrl }: BallProps) => {
+  const [isMobile, setIsMobile] = useState(false);
 
-        <Preload all />
-      </Canvas>
-    </>
-  )
-}
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    return () => mediaQuery.removeEventListener('change', handleMediaQueryChange);
+  }, []);
+
+  // Don't render 3D on mobile
+  if (isMobile) {
+    return (
+      <img 
+        src={imgUrl} 
+        alt="technology" 
+        className="w-28 h-28 object-contain"
+      />
+    );
+  }
+
+  return (
+    <Canvas
+      frameloop="demand"
+      gl={{ preserveDrawingBuffer: true }}
+    >
+      <Suspense fallback={<Loader />}>
+        <OrbitControls enableZoom={false} />
+        <Ball imgUrl={imgUrl} />
+      </Suspense>
+      <Preload all />
+    </Canvas>
+  );
+};
 
 export default BallCanvas

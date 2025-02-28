@@ -1,29 +1,44 @@
-import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import compression from 'vite-plugin-compression';
 
 export default defineConfig({
   plugins: [
     react(),
-    sentryVitePlugin({
-      org: "chandan-kumar-yg",
-      project: "my-portfolio"
-    })
+    compression({
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 1024, // Only compress files larger than 1KB
+      deleteOriginFile: false,
+    }),
+    compression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024,
+    }),
   ],
-  server: {
-    cors: true
-  },
   build: {
-    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          animations: ['framer-motion', 'react-tilt'],
-        }
-      }
-    }
+          'react-vendor': ['react', 'react-dom'],
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'motion-vendor': ['framer-motion'],
+          'router-vendor': ['react-router-dom'],
+          'timeline-vendor': ['react-vertical-timeline-component'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+      },
+    },
+    reportCompressedSize: false,
   },
-  // Add this to ensure environment variables are handled correctly
-  envPrefix: 'VITE_'
 });

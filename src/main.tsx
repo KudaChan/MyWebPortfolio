@@ -1,10 +1,14 @@
-import { StrictMode } from 'react';
+import { StrictMode, lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import * as Sentry from '@sentry/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import * as Sentry from '@sentry/react';
 import './index.css';
 import App from './App';
-import { All_Projects, All_Experience, ErrorPage } from './pages';
+import { ErrorPage } from './pages';
+
+// Lazy load route components
+const All_Projects = lazy(() => import('./pages/all-projects'));
+const All_Experience = lazy(() => import('./pages/all-experience'));
 
 const router = createBrowserRouter([
   {
@@ -14,32 +18,39 @@ const router = createBrowserRouter([
   },
   {
     path: '/projects',
-    element: <All_Projects />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <All_Projects />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />,
   },
   {
     path: '/experience',
-    element: <All_Experience />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <All_Experience />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />,
   }
 ], {
   basename: '/'
 });
 
-// Initialize Sentry
+// Optimize Sentry configuration
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
     Sentry.browserTracingIntegration(),
-    Sentry.replayIntegration(),
+    Sentry.replayIntegration({
+      maskAllText: false,
+      blockAllMedia: true,
+    }),
   ],
-  // Tracing
-  tracesSampleRate: 1.0, //  Capture 100% of the transactions
-  // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-  tracePropagationTargets: ['localhost', /^https:\/\/yourserver\.io\/api/],
-  // Session Replay
-  replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
-  replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
+  tracesSampleRate: import.meta.env.PROD ? 0.2 : 1.0,
+  replaysSessionSampleRate: import.meta.env.PROD ? 0.1 : 1.0,
+  replaysOnErrorSampleRate: 1.0,
 });
 
 createRoot(document.getElementById('root')!).render(
