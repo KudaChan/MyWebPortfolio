@@ -1,4 +1,3 @@
-// https://vite.dev/config/
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -24,5 +23,7 @@ export default defineConfig({
         }
       }
     }
-  }
+  },
+  // Add this to ensure environment variables are handled correctly
+  envPrefix: 'VITE_'
 });
