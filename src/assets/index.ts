@@ -26,6 +26,7 @@ import typescript from "./tech/typescript.png";
 import csharp from "./tech/csharp.png";
 import nextjs from "./tech/nextjs.png";
 import postgresql from "./tech/postgresql.png";
+import kafka from "./tech/kafka.png";
 import threejs from "./tech/threejs.svg";
 
 import aatvish from "./company/aatvish.png";
@@ -36,6 +37,7 @@ import mis from "./project_image/mis.png";
 import apple from "./project_image/apple.png";
 import nike from "./project_image/nike.png";
 import herbai_server from "./project_image/herbai_server.png";
+import polling from "./project_image/polling.png";
 import ai_plant from "./project_image/ai_plant.png";
 import crop_ai from "./project_image/crop_ai.png";
 
@@ -63,6 +65,7 @@ export {
   csharp,
   nextjs,
   postgresql,
+  kafka,
   mongodb,
   nodejs,
   reactjs,
@@ -77,6 +80,7 @@ export {
   herbai_server,
   apple,
   nike,
+  polling,
   ai_plant,
   crop_ai,
   copyright,

@@ -24,7 +24,7 @@ const CodingIntro = () => {
   // Simplified code string for mobile
   const mobileCodeString = `const aboutMe = {
   name: "Chandan Kumar",
-  title: "Full Stack Developer",
+  title: "Full Stack Developer & AI Enthusiast",
   skills: {
     Frontend: [
       "React", "Next.js",
@@ -32,7 +32,7 @@ const CodingIntro = () => {
     ],
     Backend: [
       "Node.js", "Express",
-      "MongoDB"
+      "MongoDB", "Kafka"
     ]
   },
   interests: [
@@ -54,7 +54,7 @@ const CodingIntro = () => {
     },
     {
       Category: Backend,
-      Skills: [ "Node.js", "Nest.js", "Express.js", "Fastify.js", "MongoDB", "PostgreSQL" ],
+      Skills: [ "Node.js", "Nest.js", "Express.js", "Fastify.js", "MongoDB", "PostgreSQL", "Kafka", "WebSockets" ],
     },
     {
       Category: Other,

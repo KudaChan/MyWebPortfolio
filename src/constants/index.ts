@@ -4,8 +4,6 @@ import {
   creator,
   web,
   typescript,
-  html,
-  css,
   reactjs,
   csharp,
   nextjs,
@@ -13,6 +11,7 @@ import {
   redux,
   tailwind,
   nodejs,
+  kafka,
   mongodb,
   git,
   docker,
@@ -70,14 +69,6 @@ const services = [
 
 const technologies = [
   {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
     name: "TypeScript",
     icon: typescript,
   },
@@ -108,6 +99,10 @@ const technologies = [
   {
     name: "MongoDB",
     icon: mongodb,
+  },
+  {
+    name: "Kafka",
+    icon: kafka,
   },
   {
     name: "PostgreSQL",

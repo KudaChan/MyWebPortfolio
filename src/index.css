@@ -15,6 +15,7 @@
 
 html, body {
   scroll-behavior: smooth;
+  background-color: #050816 ;
 }
 
 .hash-span {
